@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">diary</string>
+    <string name="add">+</string>
+    <string name="expand">EXPAND</string>
+    <string name="update">UPDATE</string>
+    <string name="delete">DELETE</string>
+    <string name="personal_img">personal img</string>
+    <string name="name">NAME</string>
+    <string name="number">1234567890</string>
+    <string name="more_actions_description">more actions</string>
+    <string name="add_but_description">add contact</string>
+</resources>
