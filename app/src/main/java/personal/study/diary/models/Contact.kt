@@ -1,5 +1,8 @@
 package personal.study.diary.models
 
+import androidx.room.Entity
+
+@Entity(tableName = "contacts")
 class Contact() {
 
     var id: Int = -1
