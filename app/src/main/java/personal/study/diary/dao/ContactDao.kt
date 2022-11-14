@@ -7,7 +7,7 @@ import androidx.room.Query
 import personal.study.diary.models.Contact
 
 @Dao
-public interface IDAO {
+public interface ContactDao {
 
     @Query("SELECT * FROM contacts")
     fun getAllContacts(): List<Contact>

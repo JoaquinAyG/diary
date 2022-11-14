@@ -2,7 +2,7 @@ package personal.study.diary.dao
 
 import personal.study.diary.models.Contact
 
-class ContactRepository : IDAO{
+class ContactRepository : ContactDao{
     override fun getAllContacts(): List<Contact> {
         TODO("Not yet implemented")
     }
