@@ -1,17 +1,23 @@
 package personal.study.diary.dao
 
+import androidx.annotation.WorkerThread
 import personal.study.diary.models.Contact
+import kotlinx.coroutines.flow.Flow
 
-class ContactRepository : ContactDao{
-    override fun getAllContacts(): List<Contact> {
-        TODO("Not yet implemented")
+class ContactRepository(private val contactDao: ContactDao){
+    val allContacts: Flow<List<Contact>> = contactDao.getAllContacts()
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun insert(contact: Contact) {
+        contactDao.insert(contact)
     }
 
-    override fun insert(contact: Contact) {
-        TODO("Not yet implemented")
+    suspend fun delete(contact: Contact) {
+        contactDao.delete(contact)
     }
 
-    override fun deleteAll() {
-        TODO("Not yet implemented")
+    suspend fun update(contact: Contact) {
+        contactDao.update(contact)
     }
 }

@@ -1,20 +1,23 @@
 package personal.study.diary.models
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "contacts")
-class Contact() {
+class Contact(
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "phone") var phone: Int,
+    @ColumnInfo(name = "image") var image: String,
 
-    var id: Int = -1
-    var name: String? = null
-    var phone: String? = null
-    var image: String? = null
+) {
 
-    constructor(id: Int?, name: String?, phone: String?, image: String?) : this() {
-        this.id = id?:-1
-        this.name = name
-        this.phone = phone
-        this.image = image
-    }
+    constructor() : this(
+        -1,
+        "",
+        0,
+        ""
+    )
 
 }

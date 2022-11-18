@@ -9,4 +9,7 @@
     <string name="number">1234567890</string>
     <string name="more_actions_description">more actions</string>
     <string name="add_but_description">add contact</string>
+    <string name="inspect">Inspect</string>
+    <string name="update_menu">Update</string>
+    <string name="delete_menu">Delete</string>
 </resources>
