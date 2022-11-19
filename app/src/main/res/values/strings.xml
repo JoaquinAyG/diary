@@ -12,4 +12,7 @@
     <string name="inspect">Inspect</string>
     <string name="update_menu">Update</string>
     <string name="delete_menu">Delete</string>
+    <string name="save">Save</string>
+    <string name="num_add">Number</string>
+    <string name="name_add">NAME</string>
 </resources>
