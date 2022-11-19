@@ -3,12 +3,13 @@ package personal.study.diary.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import personal.study.diary.R
 import personal.study.diary.models.Contact
+
 
 class ContactListAdapter : ListAdapter<Contact, ContactListAdapter.ContactViewHolder>(ContactsComparator()) {
 
@@ -17,26 +18,29 @@ class ContactListAdapter : ListAdapter<Contact, ContactListAdapter.ContactViewHo
     }
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-        val current = getItem(position)
-        holder.bind(current)
+        holder.bind(getItem(position))
     }
 
     class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val contactItemView: TextView = itemView.findViewById(R.id.name)
 
-        fun bind(text: String?) {
-            contactItemView.text = text
+        private val name: TextView = itemView.findViewById(personal.study.diary.R.id.name)
+        private val number: TextView = itemView.findViewById(personal.study.diary.R.id.number)
+        private val image: ImageView = itemView.findViewById(personal.study.diary.R.id.image)
+
+        fun bind(contact: Contact) {
+            name.text = contact.name
+            number.text = contact.phone.toString()
+            image.setImageResource(personal.study.diary.R.mipmap.profile_icon)
         }
 
         companion object {
             fun create(parent: ViewGroup): ContactViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_contact, parent, false)
+                    .inflate(personal.study.diary.R.layout.item_contact, parent, false)
                 return ContactViewHolder(view)
             }
         }
     }
-
     class ContactsComparator : DiffUtil.ItemCallback<Contact>() {
         override fun areItemsTheSame(oldItem: Contact, newItem: Contact): Boolean {
             return oldItem === newItem

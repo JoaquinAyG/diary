@@ -6,18 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "contacts")
 class Contact(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Int,
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "phone") var phone: Int,
     @ColumnInfo(name = "image") var image: String,
 
-) {
-
-    constructor() : this(
-        -1,
-        "",
-        0,
-        ""
-    )
-
-}
+    ) : java.io.Serializable

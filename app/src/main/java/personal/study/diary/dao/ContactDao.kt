@@ -1,9 +1,6 @@
 package personal.study.diary.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import personal.study.diary.models.Contact
 
@@ -16,8 +13,13 @@ public interface ContactDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(contact: Contact)
 
+    @Delete
     fun delete(contact: Contact)
 
+    @Update
     fun update(contact: Contact)
+
+    @Query("DELETE FROM contacts")
+    fun deleteAll()
 
 }
