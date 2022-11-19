@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import personal.study.diary.models.Contact
 
 
-class ContactListAdapter : ListAdapter<Contact, ContactListAdapter.ContactViewHolder>(ContactsComparator()) {
+class ContactListAdapter :
+    ListAdapter<Contact, ContactListAdapter.ContactViewHolder>(ContactsComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         return ContactViewHolder.create(parent)
@@ -41,6 +42,7 @@ class ContactListAdapter : ListAdapter<Contact, ContactListAdapter.ContactViewHo
             }
         }
     }
+
     class ContactsComparator : DiffUtil.ItemCallback<Contact>() {
         override fun areItemsTheSame(oldItem: Contact, newItem: Contact): Boolean {
             return oldItem === newItem

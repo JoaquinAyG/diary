@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import personal.study.diary.dao.ContactRepository
 import personal.study.diary.viewmodel.ContactViewModel
 
-class ContactViewModelFactory(private val repository: ContactRepository): ViewModelProvider.Factory {
+class ContactViewModelFactory(private val repository: ContactRepository) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ContactViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

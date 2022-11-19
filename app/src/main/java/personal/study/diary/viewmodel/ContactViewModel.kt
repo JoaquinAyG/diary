@@ -1,11 +1,14 @@
 package personal.study.diary.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import personal.study.diary.dao.ContactRepository
 import personal.study.diary.models.Contact
 
-class ContactViewModel(private val repository: ContactRepository): ViewModel() {
+class ContactViewModel(private val repository: ContactRepository) : ViewModel() {
 
     val allContacts: LiveData<List<Contact>> = repository.allContacts.asLiveData()
 

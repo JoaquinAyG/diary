@@ -1,15 +1,13 @@
 package personal.study.diary.dao
 
 import android.content.Context
-import android.os.AsyncTask.execute
 import androidx.room.Database
 import androidx.room.Room
-import androidx.sqlite.db.SupportSQLiteDatabase
-import personal.study.diary.models.Contact
-import java.util.concurrent.Executors
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import personal.study.diary.models.Contact
 
 @Database(entities = [Contact::class], version = 1, exportSchema = false)
 abstract class ContactRoomDatabase : RoomDatabase() {
@@ -50,7 +48,7 @@ abstract class ContactRoomDatabase : RoomDatabase() {
 
             contactDao.deleteAll()
 
-            var contact = Contact(1, "Hello", 43110, "")
+            val contact = Contact(1, "Hello", 43110, "")
             contactDao.insert(contact)
         }
     }

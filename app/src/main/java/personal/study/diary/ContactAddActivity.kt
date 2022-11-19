@@ -20,6 +20,5 @@ class ContactAddActivity : AppCompatActivity() {
         val editable = intent?.getBooleanExtra("editable", false)
 
 
-        
     }
 }
