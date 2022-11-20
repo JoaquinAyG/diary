@@ -6,8 +6,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import personal.study.diary.models.Contact
 
+val EXTRA_REPLY : String = "REPLY"
 
 class ContactAddActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_add)
