@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Diary"
         tools:targetApi="31">
         <activity
-            android:name=".ContactAddActivity"
+            android:name=".ContactViewActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

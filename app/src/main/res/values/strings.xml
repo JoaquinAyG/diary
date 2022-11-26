@@ -16,4 +16,5 @@
     <string name="num_add">Number</string>
     <string name="name_add">NAME</string>
     <string name="empty_not_saved">empty</string>
+    <string name="fav">Favourite</string>
 </resources>

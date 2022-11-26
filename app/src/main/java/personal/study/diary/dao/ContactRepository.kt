@@ -9,7 +9,7 @@ class ContactRepository(private val contactDao: ContactDao) {
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun insert(contact: Contact) {
+    fun insert(contact: Contact) {
         contactDao.insert(contact)
     }
 
