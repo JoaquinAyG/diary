@@ -15,12 +15,13 @@ import personal.study.diary.models.Contact
 class ContactListAdapter(
     private val onFavourite: (Contact) -> Unit,
     private val onClick: (Contact) -> Unit,
-    private val onDelete: (Contact) -> Unit
+    private val onDelete: (Contact) -> Unit,
+    private val onEdit: (Contact) -> Unit
 ) : ListAdapter<Contact, ContactListAdapter.ContactViewHolder>(ContactsComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val view = ViewGroup.inflate(parent.context, R.layout.item_contact, null)
-        return ContactViewHolder(view, onClick, onFavourite, onDelete)
+        return ContactViewHolder(view, onClick, onFavourite, onDelete, onEdit)
     }
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
@@ -31,7 +32,8 @@ class ContactListAdapter(
         itemView: View,
         private val onClick: (Contact) -> Unit,
         private val onFavourite: (Contact) -> Unit,
-        private val onDelete: (Contact) -> Unit
+        private val onDelete: (Contact) -> Unit,
+        private val onEdit: (Contact) -> Unit
 
     ) : ViewHolder(itemView) {
 
@@ -40,6 +42,7 @@ class ContactListAdapter(
         private val image: ImageView = itemView.findViewById(R.id.image)
         private val burDelete: ImageButton = itemView.findViewById(R.id.delete)
         private val butFavourite: ImageButton = itemView.findViewById(R.id.fav)
+        private val butEdit: ImageButton = itemView.findViewById(R.id.edit)
 
         fun bind(contact: Contact) {
             name.text = contact.name
@@ -48,6 +51,7 @@ class ContactListAdapter(
             itemView.setOnClickListener { onClick(contact) }
             burDelete.setOnClickListener { onDelete(contact) }
             butFavourite.setOnClickListener { onFavourite(contact) }
+            butEdit.setOnClickListener { onEdit(contact) }
         }
     }
 

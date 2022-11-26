@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity() {
                 val contact = it.data?.getSerializableExtra(EXTRA_REPLY)
                 contactViewModel.update(contact as Contact)
             }
+            RESULT_CANCELED -> Toast.makeText(
+                applicationContext,
+                "Contact not saved, Name or number were empty",
+                Toast.LENGTH_LONG).show()
             else -> Toast.makeText(
                     applicationContext,
                     R.string.empty_not_saved,
@@ -38,6 +42,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun insertContact(contact: Contact) {
+        if(contact.id < 0){
+            contact.id = getNextId()
+        }
         contactViewModel.insert(contact)
     }
 
@@ -50,12 +57,18 @@ class MainActivity : AppCompatActivity() {
         val adapter = ContactListAdapter(
             onClick = {
                 val intent = Intent(this@MainActivity, ContactViewActivity::class.java)
+                intent.putExtra(EXTRA_STATE, 0)
                 intent.putExtra(EXTRA_CONTACT, it)
-                intent.putExtra(EXTRA_EDITABLE, false)
                 activityResultLauncher.launch(intent)
             },
             onDelete = { contactViewModel.delete(it) },
-            onFavourite = { Toast.makeText(this, "Favourite", Toast.LENGTH_SHORT).show() }
+            onFavourite = { Toast.makeText(this, "Favourite", Toast.LENGTH_SHORT).show() },
+            onEdit = {
+                val intent = Intent(this@MainActivity, ContactViewActivity::class.java)
+                intent.putExtra(EXTRA_STATE, 2)
+                intent.putExtra(EXTRA_CONTACT, it)
+                activityResultLauncher.launch(intent)
+            }
         )
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -66,8 +79,12 @@ class MainActivity : AppCompatActivity() {
 
         butAdd.setOnClickListener {
             val intent = Intent(this@MainActivity, ContactViewActivity::class.java)
-            intent.putExtra(EXTRA_EDITABLE, true)
+            intent.putExtra(EXTRA_STATE, 1)
             activityResultLauncher.launch(intent)
         }
+    }
+
+    private fun getNextId(): Int {
+        return contactViewModel.allContacts.value?.maxOf { it.id }?.plus(1) ?: 0
     }
 }
