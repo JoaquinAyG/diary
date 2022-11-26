@@ -24,10 +24,7 @@ class MainActivity : AppCompatActivity() {
     private val activityResultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()) {
         when (it.resultCode) {
-            INSERT -> {
-                val contact = it.data?.getSerializableExtra(EXTRA_REPLY)
-                contactViewModel.insert(contact as Contact)
-            }
+            INSERT -> insertContact(it.data?.getSerializableExtra(EXTRA_REPLY) as Contact)
             UPDATE -> {
                 val contact = it.data?.getSerializableExtra(EXTRA_REPLY)
                 contactViewModel.update(contact as Contact)
@@ -38,6 +35,10 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
         }
+    }
+
+    private fun insertContact(contact: Contact) {
+        contactViewModel.insert(contact)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

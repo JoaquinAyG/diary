@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import personal.study.diary.models.Contact
 
 @Dao
-public interface ContactDao {
+interface ContactDao {
 
     @Query("SELECT * FROM contacts")
     fun getAllContacts(): Flow<List<Contact>>

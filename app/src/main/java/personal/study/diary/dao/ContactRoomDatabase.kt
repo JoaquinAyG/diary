@@ -24,7 +24,7 @@ abstract class ContactRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     ContactRoomDatabase::class.java,
                     "contact_database"
-                ).addCallback(ContactDatabaseCallback(scope)).build()
+                ).addCallback(ContactDatabaseCallback(scope)).allowMainThreadQueries().build()
                 INSTANCE = instance
                 instance
             }
